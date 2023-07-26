@@ -1,6 +1,6 @@
 # DTUChat - full-stack single-page web application
 
-This is a real-time chat application aimed at [the DTU community](https://www.dtu.dk/english/) developed in NextJS.
+This is a real-time chat application aimed at [the DTU community](https://www.dtu.dk/english/), developed in Next.js.
 
 ## Table of Contents
 - [Project Status](#project-status)
