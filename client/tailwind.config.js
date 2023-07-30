@@ -17,6 +17,7 @@ module.exports = {
       DEFAULT: "1.25rem",
     },
     colors: {
+      white: "#FFFFFF",
       green: "#417B5A",
       red: "#990000",
     },

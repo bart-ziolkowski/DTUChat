@@ -1,4 +1,5 @@
 import "./assets/styles/index.css";
+import "font-awesome/css/font-awesome.min.css";
 
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
