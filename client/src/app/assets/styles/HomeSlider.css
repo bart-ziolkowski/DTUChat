@@ -1,0 +1,45 @@
+.home-slogan {
+  animation: slide 12s infinite linear;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-95%);
+  }
+
+  11% {
+    transform: translateX(-75%);
+  }
+
+  22% {
+    transform: translateX(-55%);
+  }
+
+  33% {
+    transform: translateX(-25%);
+  }
+
+  44% {
+    transform: translateX(0);
+  }
+
+  55% {
+    transform: translateX(25%);
+  }
+
+  66% {
+    transform: translateX(55%);
+  }
+
+  77% {
+    transform: translateX(75%);
+  }
+
+  88% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(120%);
+  }
+}

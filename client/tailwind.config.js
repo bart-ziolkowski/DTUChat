@@ -11,6 +11,7 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "dtu-background": "url('~/src/app/assets/images/DTUBackground.jpg')",
       },
     },
     borderRadius: {
@@ -20,6 +21,11 @@ module.exports = {
       white: "#FFFFFF",
       green: "#417B5A",
       red: "#990000",
+      blue: "#084B83",
+      orange: "#F58549",
+    },
+    fontSize: {
+      "7.5xl": "5rem",
     },
   },
   plugins: [],
