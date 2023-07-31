@@ -24,9 +24,6 @@ module.exports = {
       blue: "#084B83",
       orange: "#F58549",
     },
-    fontSize: {
-      "7.5xl": "5rem",
-    },
   },
   plugins: [],
 };

@@ -4,42 +4,42 @@
 
 @keyframes slide {
   0% {
-    transform: translateX(-95%);
+    transform: translateX(-80vw);
   }
 
-  11% {
-    transform: translateX(-75%);
+  10% {
+    transform: translateX(-60vw);
   }
 
-  22% {
-    transform: translateX(-55%);
+  20% {
+    transform: translateX(-40vw);
   }
 
-  33% {
-    transform: translateX(-25%);
+  30% {
+    transform: translateX(-20vw);
   }
 
-  44% {
+  40% {
     transform: translateX(0);
   }
 
-  55% {
-    transform: translateX(25%);
+  50% {
+    transform: translateX(20vw);
   }
 
-  66% {
-    transform: translateX(55%);
+  60% {
+    transform: translateX(40vw);
   }
 
-  77% {
-    transform: translateX(75%);
+  70% {
+    transform: translateX(60vw);
   }
 
-  88% {
-    transform: translateX(100%);
+  80% {
+    transform: translateX(80vw);
   }
 
   100% {
-    transform: translateX(120%);
+    transform: translateX(-80vw);
   }
 }

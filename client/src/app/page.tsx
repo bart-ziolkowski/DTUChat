@@ -54,15 +54,27 @@ export default function Home() {
       <nav className="bg-red">
         <Image src={DTULogo} alt="DTU logo" className="w-16 h-auto mx-auto" />
       </nav>
-      <div className="grid justify-center h-screen text-center bg-dtu-background bg-no-repeat bg-cover bg-bottom">
-        <h1 className="home-slogan h-fit w-4/5 p-3 rounded-b text-7.5xl text-white bg-red">
-          The best DTU chat app is yet to come. Until now.
-        </h1>
-        <div className="flex flex-col gap-y-2 justify-center w-1/7 mx-auto">
+      <div className="grid justify-center items-evenly h-screen text-center bg-dtu-background bg-no-repeat bg-cover bg-bottom">
+        <div className="grid grid-flow-col justify-evenly items-center h-fit p-3 rounded-b bg-green">
+          <h1 className="whitespace-nowrap text-8xl text-white">
+            DTUChat powered by
+          </h1>
+          <Image
+            src={DTUDescLogo}
+            alt="DTU logo with name"
+            className="inline mx-auto rounded"
+          />
+        </div>
+        <div className="flex flex-col gap-y-2 justify-center h-fit w-1/7 p-3 mx-auto bg-blue">
           <GoogleButton text="Sign in with Google" />
           <GoogleButton text="Sign up with Google" />
         </div>
-        <Image src={DTUDescLogo} alt="DTU logo with name" className="rounded" />
+
+        <div className="h-fit rounded overflow-hidden bg-blue">
+          <h1 className="home-slogan p-3 whitespace-nowrap text-8xl text-white">
+            Hej! Hi! Cześć! Ahoj! Salut! Ciao! Hallo!
+          </h1>
+        </div>
       </div>
       <div className="grid justify-center text-white bg-red">
         <ul className="grid grid-flow-col justify-evenly my-3">
