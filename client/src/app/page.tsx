@@ -3,14 +3,21 @@
 import "./assets/styles/HomeSlider.css";
 
 import DTUDescLogo from "./assets/images/DTUDescLogo.jpg";
-import DTULogo from "./assets/images/DTULogo.jpg";
+import { GoogleAuthProvider } from "firebase/auth";
 import Image from "next/image";
-import Link from "next/link";
+import { signInWithProvider } from "../firebase/auth/signInWithProvider";
+import { useAuth } from "../context/AuthContext";
 import styled from "styled-components";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const GoogleButtonWrapper = styled.button`
+  width: fit-content;
+  height: fit-content;
   padding: 0.5rem 1rem;
-  border: 2px;
+  margin: 0 auto;
+  border: 7px #084b83 solid;
+
   background-color: #fff;
 `;
 
@@ -34,10 +41,20 @@ const GoogleIcon = styled.svg`
   }
 `;
 
-const GoogleButton = ({ text }: { text: string }) => {
+interface GoogleButtonProps {
+  text: string;
+  onClick: () => void;
+}
+
+const GoogleButton: React.FC<GoogleButtonProps> = ({ text, onClick }) => {
   return (
-    <GoogleButtonWrapper>
-      <GoogleIcon xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 50">
+    <GoogleButtonWrapper onClick={onClick}>
+      <GoogleIcon
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 40 50"
+        width="0"
+        height="0"
+      >
         <path d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12 s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20 s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path>
         <path d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039 l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path>
         <path d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36 c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path>
@@ -49,70 +66,40 @@ const GoogleButton = ({ text }: { text: string }) => {
 };
 
 export default function Home() {
+  const currentUser = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (currentUser) {
+      router.push("/chats");
+    }
+  }, [currentUser]);
+
   return (
-    <>
-      <nav className="bg-red">
-        <Image src={DTULogo} alt="DTU logo" className="w-16 h-auto mx-auto" />
-      </nav>
-      <div className="grid justify-center items-evenly h-screen text-center bg-dtu-background bg-no-repeat bg-cover bg-bottom">
-        <div className="grid grid-flow-col justify-evenly items-center h-fit p-3 rounded-b bg-green">
-          <h1 className="whitespace-nowrap text-8xl text-white">
-            DTUChat powered by
-          </h1>
-          <Image
-            src={DTUDescLogo}
-            alt="DTU logo with name"
-            className="inline mx-auto rounded"
-          />
-        </div>
-        <div className="flex flex-col gap-y-2 justify-center h-fit w-1/7 p-3 mx-auto bg-blue">
-          <GoogleButton text="Sign in with Google" />
-          <GoogleButton text="Sign up with Google" />
-        </div>
-
-        <div className="h-fit rounded overflow-hidden bg-blue">
-          <h1 className="home-slogan p-3 whitespace-nowrap text-8xl text-white">
-            Hej! Hi! Cześć! Ahoj! Salut! Ciao! Hallo!
-          </h1>
-        </div>
+    <div className="grid justify-center items-evenly h-screen text-center bg-dtu-background bg-no-repeat bg-cover bg-bottom">
+      <div className="grid grid-flow-col justify-evenly items-center h-fit p-3 rounded-b bg-green">
+        <h1 className="whitespace-nowrap text-8xl text-white">
+          DTUChat powered by
+        </h1>
+        <Image
+          src={DTUDescLogo}
+          alt="DTU logo with name"
+          className="inline mx-auto rounded"
+        />
       </div>
-      <div className="grid justify-center text-white bg-red">
-        <ul className="grid grid-flow-col justify-evenly my-3">
-          <li>
-            <Link href="https://www.facebook.com/dtudk" target="_blank">
-              <i className="fa fa-facebook"></i>
-            </Link>
-          </li>
-
-          <li>
-            <Link href="https://twitter.com/DTUtweet" target="_blank">
-              <i className="fa fa-twitter"></i>
-            </Link>
-          </li>
-
-          <li>
-            <Link href="https://www.instagram.com/dtudk/" target="_blank">
-              <i className="fa fa-instagram"></i>
-            </Link>
-          </li>
-
-          <li>
-            <Link href="https://www.youtube.com/@DTUbroadcast" target="_blank">
-              <i className="fa fa-youtube"></i>
-            </Link>
-          </li>
-
-          <li>
-            <Link
-              href="https://www.linkedin.com/school/technical-university-of-denmark/"
-              target="_blank"
-            >
-              <i className="fa fa-linkedin-square"></i>
-            </Link>
-          </li>
-        </ul>
-        <p className="mb-3">© 2023 DTU Chat. All rights reserved.</p>
+      {!currentUser ? (
+        <GoogleButton
+          onClick={() => signInWithProvider(new GoogleAuthProvider())}
+          text="Sign in with Google"
+        />
+      ) : (
+        <h1>Welcome back currentUser!</h1>
+      )}
+      <div className="h-fit rounded overflow-hidden bg-blue">
+        <h1 className="home-slogan p-3 whitespace-nowrap text-8xl text-white">
+          Hej! Hi! Cześć! Ahoj! Salut! Ciao! Hallo!
+        </h1>
       </div>
-    </>
+    </div>
   );
 }

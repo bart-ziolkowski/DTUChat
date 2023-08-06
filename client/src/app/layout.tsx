@@ -1,8 +1,10 @@
 import "./assets/styles/index.css";
 import "font-awesome/css/font-awesome.min.css";
 
+import { AuthContextProvider } from "../context/AuthContext";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import Layout from "./components/layout";
 
 const roboto = Roboto({
   weight: "400",
@@ -24,8 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={roboto.className}>{children}</body>
-    </html>
+    <AuthContextProvider>
+      <html lang="en">
+        <body className={roboto.className} suppressHydrationWarning={true}>
+        <Layout children={children}/>
+        </body>
+      </html>
+    </AuthContextProvider>
   );
 }
