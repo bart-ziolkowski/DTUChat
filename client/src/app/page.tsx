@@ -1,13 +1,13 @@
 "use client";
 
-import "./assets/styles/HomeSlider.css";
+import "../assets/styles/HomeSlider.css";
 
-import DTUDescLogo from "./assets/images/DTUDescLogo.jpg";
+import DTUDescLogo from "../assets/images/DTUDescLogo.jpg";
 import { GoogleAuthProvider } from "firebase/auth";
 import Image from "next/image";
 import { signInWithProvider } from "../firebase/auth/signInWithProvider";
-import { useAuth } from "../context/AuthContext";
 import styled from "styled-components";
+import { useAuth } from "../context/AuthContext";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
@@ -93,7 +93,7 @@ export default function Home() {
           text="Sign in with Google"
         />
       ) : (
-        <h1>Welcome back currentUser!</h1>
+          <h1>Welcome back {currentUser.displayName}!</h1>
       )}
       <div className="h-fit rounded overflow-hidden bg-blue">
         <h1 className="home-slogan p-3 whitespace-nowrap text-8xl text-white">
