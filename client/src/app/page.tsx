@@ -19,6 +19,7 @@ const GoogleButtonWrapper = styled.button`
   border: 7px #084b83 solid;
 
   background-color: #fff;
+  color: black;
 `;
 
 const GoogleIcon = styled.svg`
@@ -76,9 +77,9 @@ export default function Home() {
   }, [currentUser]);
 
   return (
-    <div className="grid justify-center items-evenly h-screen text-center bg-dtu-background bg-no-repeat bg-cover bg-bottom">
+    <div className="grid justify-center items-evenly h-screen text-center text-white bg-dtu-background bg-no-repeat bg-cover bg-bottom">
       <div className="grid grid-flow-col justify-evenly items-center h-fit p-3 rounded-b bg-green">
-        <h1 className="whitespace-nowrap text-8xl text-white">
+        <h1 className="whitespace-nowrap text-8xl">
           DTUChat powered by
         </h1>
         <Image
@@ -93,10 +94,10 @@ export default function Home() {
           text="Sign in with Google"
         />
       ) : (
-          <h1>Welcome back {currentUser.displayName}!</h1>
+          <h1 className="h-fit w-fit p-4 mx-auto rounded bg-red">Welcome {currentUser.displayName}</h1>
       )}
       <div className="h-fit rounded overflow-hidden bg-blue">
-        <h1 className="home-slogan p-3 whitespace-nowrap text-8xl text-white">
+        <h1 className="home-slogan p-3 whitespace-nowrap text-8xl">
           Hej! Hi! Cześć! Ahoj! Salut! Ciao! Hallo!
         </h1>
       </div>

@@ -2,9 +2,10 @@ import "../assets/styles/index.css";
 import "font-awesome/css/font-awesome.min.css";
 
 import { AuthContextProvider } from "../context/AuthContext";
-import Layout from "../components/layout";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 const roboto = Roboto({
   weight: "400",
@@ -29,7 +30,9 @@ export default function RootLayout({
     <AuthContextProvider>
       <html lang="en">
         <body className={roboto.className} suppressHydrationWarning={true}>
-          <Layout children={children} />
+          <Navbar/>
+          {children}
+          <Footer/>
         </body>
       </html>
     </AuthContextProvider>
